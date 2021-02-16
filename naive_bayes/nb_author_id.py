@@ -34,11 +34,17 @@ from sklearn.scores import accuracy_score
 #Create the classifier
 clf = GaussianNB()
 
+
 #Train the classifier
+t0 = time()
 clf.fit(features_train, labels_train)
+print("training time:", round(time()-t0, 3), "s")
+
 
 #Accuracy of the classifier
+t1 = time()
 y_test = clf.predict(features_test)
+print("Predciting time:", round(time()-t1, 3), "s")
 
 accuracy_score(labels_test,y_test)
 
