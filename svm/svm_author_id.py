@@ -27,12 +27,16 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #Import required packages
 from sklearn import svm
-from sklearn.scores import accuracy_score
+from sklearn.metrics import accuracy_score
 
 #Support vector classification
-clf = SVC(kernel ="linear")
+clf = svm.SVC(kernel ="linear")
 
 #Training SVC
+# To improve the speed, reduce the set of training! (if you do not want to do this, remove the following two lines)
+features_train = features_train[:len(features_train)/100]
+labels_train = labels_train[:len(labels_train)/100]
+
 t0=time()
 clf.train(features_train, labels_train)
 
